@@ -1,0 +1,6 @@
+#!/bin/bash
+
+PASS_PATH="/path/to/mttlib.so"
+LIB_PATH="/path/to/rtlib.so"
+
+clang-12 -fsanitize=address -fsanitize-coverage=trace-pc-guard -Xclang -load -Xclang "$PASS_PATH" "$@" "$LIB_PATH"
