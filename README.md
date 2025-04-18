@@ -1,4 +1,4 @@
-# FLARE
+![image](https://github.com/user-attachments/assets/a7adcaac-020e-4c9e-b1e7-3e0f241610a9)# FLARE
 
 ## Fault Injection
 Use [OpenSSL 1.1.1j](https://github.com/openssl/openssl/tree/OpenSSL_1_1_1j) as an example.
@@ -137,3 +137,8 @@ The fault of server side focuses on `WPACKET_XXX` functions in `ssl/statem_srvr.
   stdbuf -oL -eL ./apps/openssl/openssl s_server -accept 4435 -cert cert.pem -key key.pem -Verify 1 -tls1_3 | grep --line-buffered '\[+\]' | tee plus4435.log
   ```
 - Run diff.py
+
+### 6. Server state instrumentation
+- Align state value using LLM
+![image](https://github.com/user-attachments/assets/afa01da6-4a10-4097-88bb-a0b5a77b9cb2)
+- Instrument aligned value and print standard value. For example, locate code "xxx = TLS_ST_SR_CLNT_HELLO" and instrument "printf("%s\n", "[+]RECVD_CH");"
