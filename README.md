@@ -112,10 +112,13 @@ EXT_RETURN tls_construct_ctos_sig_algs(SSL *s, WPACKET *pkt,
 The fault of server side focuses on `WPACKET_XXX` functions in `ssl/statem_srvr.c` and `ssl/extensions_srvr.c`
 
 
-### 1. Compile call.so, modify clang-fuzzwithin, and recompile OpenSSL
+### 1. Compile call.so, modify clang-fuzzwithin, and rebuild OpenSSL
 - Get result as follows, leverage LLM to filter test, debug, error functions, and so on, find the interset
 ![image](https://github.com/user-attachments/assets/a16e1482-6cdd-4e11-85c5-7bea0abd0e5d)
 
 ### 2. Modify Replace.cpp with interset and compile it to Replace.so
 
 ### 3. Modify ssl/statem/extensions.c like extensions_instru.c
+
+### 4. Build OpenSSL agian, get the mutated client, you can
+- Implement Replace strategy with environment variable REPLACE, 
