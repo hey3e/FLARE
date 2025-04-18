@@ -121,4 +121,19 @@ The fault of server side focuses on `WPACKET_XXX` functions in `ssl/statem_srvr.
 ### 3. Modify ssl/statem/extensions.c like extensions_instru.c
 
 ### 4. Build OpenSSL agian, get the mutated client, you can
-- Implement Replace strategy with environment variable REPLACE, 
+- Implement Replace strategy with environment variable REPLACE, whose value equals to one instrument site.
+- Implement Remove and Repeat strategies with environment variable REPEAT_REMOVE, where 1 to activate.
+- Use environment variable ENVSEED to control the mutation. If ENVSEED is same, the mutation will be identical.
+
+### 5. Differential testing
+- Start servers under test
+  ```
+  stdbuf -oL -eL ./apps/openssl s_server -accept 127.0.0.1:4433 -cert /path/to/cert.pem -key /path/to/key.pem -CAfile /path/to/CA.pem -Verify 1 | grep --line-buffered '\[+\]' > plus4433.log
+  ```
+  ```
+  stdbuf -oL -eL ./examples/server/server -v 4 -p 4434 -i -x | grep --line-buffered '\[+\]' | tee plus4434.log
+  ```
+  ```
+  stdbuf -oL -eL ./apps/openssl/openssl s_server -accept 4435 -cert cert.pem -key key.pem -Verify 1 -tls1_3 | grep --line-buffered '\[+\]' | tee plus4435.log
+  ```
+- Run diff.py
