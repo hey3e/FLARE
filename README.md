@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a7adcaac-020e-4c9e-b1e7-3e0f241610a9)# FLARE
+### FLARE
 
 ## Fault Injection
 Use [OpenSSL 1.1.1j](https://github.com/openssl/openssl/tree/OpenSSL_1_1_1j) as an example.
