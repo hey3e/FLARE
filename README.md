@@ -1,4 +1,4 @@
-# b2f
+# FLARE
 
 ## Fault Injection
 Use [OpenSSL 1.1.1j](https://github.com/openssl/openssl/tree/OpenSSL_1_1_1j) as an example.
