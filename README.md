@@ -140,5 +140,7 @@ The fault of server side focuses on `WPACKET_XXX` functions in `ssl/statem_srvr.
 
 ### 6. Server state instrumentation
 - Align state value using LLM
+
 ![image](https://github.com/user-attachments/assets/afa01da6-4a10-4097-88bb-a0b5a77b9cb2)
+
 - Instrument aligned value and print standard value. For example, locate code "xxx = TLS_ST_SR_CLNT_HELLO" and instrument "printf("%s\n", "[+]RECVD_CH");"
