@@ -9,7 +9,39 @@
 #include <sstream>
 #include <limits.h>
 extern "C" {
+static int deterministic_mutation(int siteID, int envseed) {
+    return (siteID * 31 + envseed * 13) & 0xFFFF;
+}
 
+
+int replace(int oldVal, int siteID, const char *fnName, const char *instStr) {
+    // 读取 REPLACE 环境变量，用于比对 siteID
+    const char *rEnv = getenv("REPLACE");
+    if (rEnv != NULL) {
+        int targetID = atoi(rEnv);
+        if (targetID == siteID) {
+            // 再读 ENVSEED，默认为0
+            int envseed = 0;
+            const char *sEnv = getenv("ENVSEED");
+            if (sEnv != NULL) {
+                envseed = atoi(sEnv);
+            }
+            // 用确定性公式生成变异值
+            int mutated = deterministic_mutation(siteID, envseed);
+
+            fprintf(stderr,
+                "[*] replace: siteID=%d in %s\n"
+                "    oldVal=%d => mutated=%d\n"
+                "    IR: %s\n",
+                siteID, fnName, oldVal, mutated, instStr);
+
+            return mutated;
+        }
+    }
+
+    // 默认不变异
+    return oldVal;
+}
 	// int32 mutation
 	int32_t mutate(int32_t value) {
 		static int lastCase = -1;
