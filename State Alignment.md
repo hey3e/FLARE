@@ -1,7 +1,5 @@
 # Differential Testing: Alignment
 
-![Untitled](Untitled.png)
-
 # OpenSSL
 
 TLS_ST_SR_CLNT_HELLO：RECVD_CH
