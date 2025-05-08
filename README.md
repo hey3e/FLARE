@@ -144,3 +144,22 @@ The fault of server side focuses on `WPACKET_XXX` functions in `ssl/statem_srvr.
 ![image](https://github.com/user-attachments/assets/afa01da6-4a10-4097-88bb-a0b5a77b9cb2)
 
 - Instrument aligned value and print standard value. For example, locate code "xxx = TLS_ST_SR_CLNT_HELLO" and instrument "printf("%s\n", "[+]RECVD_CH");"
+
+- Instrumented variables:
+
+![image](https://github.com/user-attachments/assets/06093cff-71d3-4a8b-bcda-487719f55890)
+
+### 7. Alert track
+- Consider alert code as one part of the differential testing
+
+- OpenSSL ./ssl/statem/statem.c ossl_statem_fatal
+  ![image](https://github.com/user-attachments/assets/a70df45c-b3eb-4fe8-ae53-fdd34d4f808a)
+
+
+- wolfSSL ./src/internal.c SendAlert
+  ![image](https://github.com/user-attachments/assets/883fa739-d22e-470f-961c-0da79b6adcc9)
+
+
+- LibreSSL ./ssl/tls13_lib.c tls13_alert_sent_cb
+  ![image](https://github.com/user-attachments/assets/85eb1830-d971-40fc-9715-faaa99540421)
+
