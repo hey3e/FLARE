@@ -134,6 +134,8 @@ Cannot find state transition, instrument message-related functions
 
 RECVD_CH: ssl/tls13_server.c/tls13_client_hello_recv
 
+![image](https://github.com/user-attachments/assets/8604a234-94c9-4663-8969-ed6a795c25e0)
+
 WAIT_CERT: ssl/tls13_server.c/tls13_server_finished_sent
 
 WAIT_CV: ssl/tls13_server.c/tls13_client_certificate_recv
