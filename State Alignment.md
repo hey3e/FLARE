@@ -127,3 +127,12 @@ STATE113 finished
 // STATE114
 
 STATE115 sessionticket：CONNECTED
+
+# LibreSSL
+
+Cannot find state transition, instrument message-related functions
+RECVD_CH: ssl/tls13_server.c/tls13_client_hello_recv
+WAIT_CERT: ssl/tls13_server.c/tls13_server_finished_sent
+WAIT_CV: ssl/tls13_server.c/tls13_client_certificate_recv
+WAIT_FINISHED: ssl/tls13_server.c/tls13_client_certificate_verify_recv
+CONNECTED: ssl/tls13_server.c/tls13_client_finished_recv
